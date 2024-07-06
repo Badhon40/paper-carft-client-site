@@ -39,7 +39,8 @@ const Routes=createBrowserRouter([
             },
             {
                 path:'/myArtAndCarft',
-                element:<Private><MyArtAndCraft></MyArtAndCraft></Private>
+                element:<Private><MyArtAndCraft></MyArtAndCraft></Private>,
+        
             }
         ]
     }

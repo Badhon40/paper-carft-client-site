@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../firebaseProvider/FirebaseProvider";
 import { toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
     const {createUser}=useContext(AuthContext)
     const [showPassword,setShowPassword]=useState(false)
+    const location=useLocation()
+    const navigate=useNavigate()
     const handleRegister=e=>{
 
 
@@ -38,6 +40,7 @@ const Register = () => {
         createUser(email,password)
         .then(()=>{
             toast.success("Register Successfully");
+            navigate(location?.state ? location.state : '/');
         })
         .catch((error)=>{
             switch (error.code) {

@@ -7,6 +7,7 @@ import Register from '../pages/register/Register';
 import Error from './../pages/error/Error';
 import AddArtAndCraft from '../pages/addArtAndCraft/AddArtAndCraft';
 import MyArtAndCraft from '../pages/myArtAndCraft/MyArtAndCraft';
+import Private from '../components/private/Private';
 
 
 
@@ -34,11 +35,11 @@ const Routes=createBrowserRouter([
             },
             {
                 path:'/addArtAndCraft',
-                element:<AddArtAndCraft></AddArtAndCraft>
+                element:<Private><AddArtAndCraft></AddArtAndCraft></Private>
             },
             {
                 path:'/myArtAndCarft',
-                element:<MyArtAndCraft></MyArtAndCraft>
+                element:<Private><MyArtAndCraft></MyArtAndCraft></Private>
             }
         ]
     }

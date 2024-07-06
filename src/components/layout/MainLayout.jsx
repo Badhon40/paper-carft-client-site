@@ -3,14 +3,16 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 
 
-const MainLayout = ({children}) => {
+const MainLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+           <div className="">
+           <Outlet></Outlet> 
+           </div>
             <Footer></Footer>
         </div>
     );
 };
 
-export default MainLayout;
+export default MainLayout; 

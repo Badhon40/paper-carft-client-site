@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-
+import { AuthContext } from "../../firebaseProvider/FirebaseProvider";
+import { toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-
+    const {createUser}=useContext(AuthContext)
     const [showPassword,setShowPassword]=useState(false)
     const handleRegister=e=>{
 
@@ -19,66 +20,50 @@ const Register = () => {
 
         const newUser={name,email,photo,password}
 
-        if(password.length<6){
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.onmouseenter = Swal.stopTimer;
-                  toast.onmouseleave = Swal.resumeTimer;
-                }
-              });
-              Toast.fire({
-                icon: "error",
-                title: "Password must be atleast 6 digits"
-              });
-              return
-        }
-        if(!/[a-z]/.test(password)){
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.onmouseenter = Swal.stopTimer;
-                  toast.onmouseleave = Swal.resumeTimer;
-                }
-              });
-              Toast.fire({
-                icon: "error",
-                title: "Password must contains lowcase digits"
-              });
-              return;
-        }
-        if(!/[A-Z]/.test(password)){
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.onmouseenter = Swal.stopTimer;
-                  toast.onmouseleave = Swal.resumeTimer;
-                }
-              });
-              Toast.fire({
-                icon: "error",
-                title: "Password must contains Uppercase digits"
-              });
-              return;
-        }
+        if (password.length < 6) {
+            toast.error("Password contains 6 digits")
+            return;
+          }
+          if (!/[A-Z]/.test(password)) {
+            toast.error("Use Atleast one Uppercase");
+            return;
+          }
+          if (!/[a-z]/.test(password)) {
+            toast.error("Use Atleast one Lowercase");
+            return;
+          }
 
         console.log(newUser)
+       
+        createUser(email,password)
+        .then(()=>{
+            toast.success("Register Successfully");
+        })
+        .catch((error)=>{
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                  toast.error("Email is already in use");
+                  break;
+                case 'auth/invalid-email':
+                  toast.error("Invalid email address");
+                  break;
+                case 'auth/weak-password':
+                  toast.error("Password is too weak");
+                  break;
+                default:
+                  toast.error(`Error: ${error.message}`);
+                  break;
+              }
+        })
+
 
     }
     return (
-        <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
+       <div>
+        
+         <div className="flex justify-center my-14 ">
+            
+            <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
         <h1 className="text-2xl font-bold text-center">Register</h1>
         <form onSubmit={handleRegister} className="space-y-6">
             <div className="space-y-1 text-sm">
@@ -103,12 +88,18 @@ const Register = () => {
                </div>
             </div>
             <button type='submit' className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600">Register</button>
+            <ToastContainer></ToastContainer>
         </form>
       
         <p className="text-xs text-center sm:px-6 dark:text-gray-600">Do have an account?
             <Link to='/login' className="underline dark:text-gray-800">Sign in</Link>
         </p>
+       
     </div>
+   
+        </div>
+       </div>
+      
     );
 };
 

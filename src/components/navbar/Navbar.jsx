@@ -1,20 +1,32 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../firebaseProvider/FirebaseProvider";
 
 const Navbar = () => {
-
+    const {logout,user}=useContext(AuthContext)
     const links=<>
     <li>
         <NavLink to='/'>Home</NavLink>
     </li>
+    {
+        user && <>
+        <li>
+        <NavLink to='/addArtAndCraft'>Add Arts</NavLink>
+          </li>
+          <li>
+        <NavLink to='/myArtAndCarft'>My Arts</NavLink>
+          </li>
+          </>
+    }
     <li>
-        <NavLink to='/allArts'>All Art & craft Items</NavLink>
+        <NavLink to='/allArts'>All Art & craft </NavLink>
     </li>
     <li>
         <NavLink to="/about">About</NavLink>
     </li>
     </>
     return (
-        <div className="navbar bg-base-100 md:px-10">
+        <div className="navbar shadow-md bg-base-100 md:px-10">
         <div className="navbar-start">
             <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,7 +96,34 @@ const Navbar = () => {
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
             </label>
-           <Link to='/login'>Login</Link>
+          
+            {
+                user?.email? <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                    <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user?.photoURL} />
+                    </div>
+                </div>
+                <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-4 gap-4 shadow">
+                    <li>
+                      {
+                        user?.displayName
+                      }
+                    </li>
+                   <li>
+                    {
+                        user?.email
+                    }
+                   </li>
+                    <li><button onClick={()=>logout()}>Logout</button></li>
+                </ul>
+                </div> :  
+                <Link to='/login'><button className="btn">Login</button></Link>
+            }
         </div>
         </div>
     );

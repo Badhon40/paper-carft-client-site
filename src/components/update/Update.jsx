@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+
 
 
 const Update = () => {
@@ -15,8 +16,35 @@ const Update = () => {
         })
     },[id])
 
-    const handleUpdate=()=>{
+    const handleUpdate=(e)=>{
+        e.preventDefault();
+    const data = {
+        image: e.target.image.value,
+        item_name: e.target.item_name.value,
+        subcategory_Name: e.target.subcategory_Name.value,
+        short_description: e.target.short_description.value,
+        price: e.target.price.value,
+        rating: e.target.rating.value,
+        customization: e.target.customization.value,
+        processing_time: e.target.processing_time.value,
+        stockStatus: e.target.stockStatus.value,
+      };
+      fetch(`http://localhost:5000/updateItem/${id}`,{
+        method:'PUT',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(data)
+      })
+      .then(res=>res.json())
+      .then(res=>{
+        if(res.modifiedCount>0){
+            setItem(res)
+            toast.success("Updated Infomation")
 
+        }
+      })
+     
     }
     return (
          <div className="flex justify-center my-14">
@@ -37,7 +65,7 @@ const Update = () => {
             <select name="subcategory_Name" id="subcategory_Name" className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required >
             <option value="" disabled selected hidden>{item.subcategory_Name}</option>
               <option value="Card Making">Card Making</option>
-              <option value="Scrap booking">Scrapbooking</option>
+              <option value="Scrap Booking">Scrap Booking</option>
               <option value="Paper Quilling Origami">Paper Quilling & Origami</option>
               <option value="Glass Painting">Glass Painting</option>
               <option value="Lampworking">Lampworking</option>

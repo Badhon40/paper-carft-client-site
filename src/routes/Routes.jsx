@@ -42,7 +42,6 @@ const Routes=createBrowserRouter([
             {
                 path:'/myArtAndCarft',
                 element:<Private><MyArtAndCraft></MyArtAndCraft></Private>,
-    
             },
             {
                 path:'/viewDetails/:id',

@@ -13,12 +13,12 @@ const ArtAndCraft = () => {
    })
 
     return (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mx-10 mt-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-5 mx-10 my-10">
             {
                 allCards.map(cards=><div key={cards._id}>
-                    <div className="card lg:card-side bg-base-100 shadow-xl">
-                        <figure>
-                            <img
+                    <div className="card lg:card-side h-64 bg-base-100 shadow-xl">
+                        <figure className="w-72">
+                            <img className="w-full h-full"
                             src={cards.image}
                             alt="Album" />
                         </figure>
@@ -27,9 +27,12 @@ const ArtAndCraft = () => {
                             <p>{cards.subcategory_Name}</p>
                             <div className="card-actions justify-end">
                             <Link to={`/viewDetails/${cards._id}`}>
+                            <div className="tooltip" data-tip="View Details">
+
                                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-3 rounded-full">
-                                        <FaEye></FaEye>
-                                    </button>
+                                <FaEye></FaEye>
+                                </button>
+                                </div>
                            </Link>
                             </div>
                         </div>

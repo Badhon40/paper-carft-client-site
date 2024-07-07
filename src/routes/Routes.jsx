@@ -10,6 +10,8 @@ import Private from '../components/private/Private';
 import ViewDetalis from '../components/viewDetails/ViewDetalis';
 import Update from '../components/update/Update';
 import ArtAndCraft from '../pages/artAndCraft/ArtAndCraft';
+import About from '../pages/about/About';
+
 
 
 
@@ -45,12 +47,17 @@ const Routes=createBrowserRouter([
             },
             {
                 path:'/viewDetails/:id',
-                element:<ViewDetalis></ViewDetalis>
+                element:<Private><ViewDetalis></ViewDetalis></Private>
             },
             {
                 path:'/updateDetails/:id',
-                element:<Update></Update>
+                element:<Private><Update></Update></Private>
+            },
+            {
+                path:'/about',
+                element:<About></About>
             }
+            
         ]
     }
 ])

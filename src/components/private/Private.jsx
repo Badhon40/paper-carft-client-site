@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../firebaseProvider/FirebaseProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import Lottie from "lottie-react";
+import Loading from '../../assets/Animation - 1720368541644.json'
 
 const Private = ({children}) => {
     const {user,loading}=useContext(AuthContext)
     const location=useLocation()
     if(loading)
         {
-            return (<div className="text-center mt-44">
-            <span className="loading loading-dots text-4xl loading-lg"></span>
-           </div>)
+            return (<Lottie animationData={Loading} />)
         }
         if(user){
             return <>{children}</>

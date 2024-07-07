@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 
+
 const Categoty = () => {
     const [cards,setCards]=useState([])
     fetch("http://localhost:5000/category")
@@ -25,6 +26,7 @@ const Categoty = () => {
                        
                     </div>
                     </div>
+                   
                 </div>)
             }
             

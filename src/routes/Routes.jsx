@@ -8,6 +8,8 @@ import Error from './../pages/error/Error';
 import AddArtAndCraft from '../pages/addArtAndCraft/AddArtAndCraft';
 import MyArtAndCraft from '../pages/myArtAndCraft/MyArtAndCraft';
 import Private from '../components/private/Private';
+import ViewDetalis from '../components/viewDetails/ViewDetalis';
+import Update from '../components/update/Update';
 
 
 
@@ -40,7 +42,15 @@ const Routes=createBrowserRouter([
             {
                 path:'/myArtAndCarft',
                 element:<Private><MyArtAndCraft></MyArtAndCraft></Private>,
-        
+    
+            },
+            {
+                path:'/viewDetails/:id',
+                element:<ViewDetalis></ViewDetalis>
+            },
+            {
+                path:'/updateDetails/:id',
+                element:<Update></Update>
             }
         ]
     }

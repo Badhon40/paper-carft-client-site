@@ -18,8 +18,8 @@ const AddArtAndCraft = () => {
         customization: e.target.customization.value,
         processing_time: e.target.processing_time.value,
         stockStatus: e.target.stockStatus.value,
-        user_email: user.email,
-        user_name: user.displayName
+        email: user.email,
+        name: user.displayName
       };
 
       fetch('http://localhost:5000/addItem',{
@@ -57,14 +57,14 @@ const AddArtAndCraft = () => {
           </div>
           <div className="space-y-1 text-sm">
           <label htmlFor="subcategory_Name" className="block dark:text-gray-600">Subcategory Name</label>
-            <select name="subcategory_Name" id="subcategory_Name"className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required >
+            <select type='text' name="subcategory_Name" id="subcategory_Name"className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required >
             <option value="" disabled selected hidden>Select Subcategory</option>
-              <option value="CardMaking">Card Making</option>
-              <option value="Scrapbooking">Scrapbooking</option>
-              <option value="PaperQuillingOrigami">Paper Quilling & Origami</option>
-              <option value="GlassPainting">Glass Painting</option>
+              <option value="Card Making">Card Making</option>
+              <option value="Scrap booking">Scrapbooking</option>
+              <option value="Paper Quilling Origami">Paper Quilling & Origami</option>
+              <option value="Glass Painting">Glass Painting</option>
               <option value="Lampworking">Lampworking</option>
-              <option value="GlassDyingStaining">Glass Dying & Staining</option>
+              <option value="Glass Dying Staining">Glass Dying & Staining</option>
             </select>
           </div>
           <div className="space-y-1 text-sm">

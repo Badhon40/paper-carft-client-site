@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
 import Home from '../pages/home/Home';
-import ArtAndCraft from '../pages/home/artAndCraft/ArtAndCraft';
 import Login from '../pages/login/Login';
 import Register from '../pages/register/Register';
 import Error from './../pages/error/Error';
@@ -10,6 +9,7 @@ import MyArtAndCraft from '../pages/myArtAndCraft/MyArtAndCraft';
 import Private from '../components/private/Private';
 import ViewDetalis from '../components/viewDetails/ViewDetalis';
 import Update from '../components/update/Update';
+import ArtAndCraft from '../pages/artAndCraft/ArtAndCraft';
 
 
 

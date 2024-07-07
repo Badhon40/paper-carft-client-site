@@ -3,8 +3,8 @@
 const Headers = () => {
     return (
         <div>
-            <div className="carousel w-full">
-  <div id="slide1" className="carousel-item relative w-full h-[80vh]">
+            <div className="carousel bg-red-300 h-[80vh] ">
+    <div id="slide1" className="carousel-item relative w-full">
     <img
       src="https://i.ibb.co/80BdyLg/istockphoto-499171034-612x612.jpg"
       className="w-full bg-cover" />
@@ -45,7 +45,7 @@ const Headers = () => {
   </div>
   <div id="slide4" className="carousel-item relative w-full h-[80vh]">
     <img
-      src="https://i.ibb.co/kQN1s0D/images-3.jpghttps://i.ibb.co/TLtJDhg/ali-balci-y7a2-Otiq1-A-unsplash.jpg"
+      src="https://i.ibb.co/NjbGkxh/ali-balci-y7a2-Otiq1-A-unsplash.jpg"
       className="w-full bg-cover" />
     <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white p-4">
       <h2 className="text-2xl font-bold">Glass Painting</h2>

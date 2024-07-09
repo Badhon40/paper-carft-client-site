@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const ArtAndCraft = () => {
   const [allCards,setAllCards]=useState([])
-   fetch("http://localhost:5000/allItem") 
+   fetch("https://server-site-qeqmcgztd-badhon-ranis-projects.vercel.app/allItem") 
    .then(res=>res.json())
    .then(data=>{
     setAllCards(data)

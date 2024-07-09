@@ -22,7 +22,7 @@ const AddArtAndCraft = () => {
         name: user.displayName
       };
 
-      fetch('http://localhost:5000/addItem',{
+      fetch('https://server-site-qeqmcgztd-badhon-ranis-projects.vercel.app/addItem',{
         method:"POST",
         headers:{
             'content-type':'application/json'
@@ -107,5 +107,6 @@ const AddArtAndCraft = () => {
     </div>
   );
 };
+
 
 export default AddArtAndCraft;

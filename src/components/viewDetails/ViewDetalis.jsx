@@ -7,7 +7,7 @@ const {id}=useParams()
 console.log(id)
 const [item,setItem]=useState({})
     useEffect(()=>{
-        fetch(`http://localhost:5000/viewOneDetail/${id}`)
+        fetch(`https://server-site-qeqmcgztd-badhon-ranis-projects.vercel.app/${id}`)
         .then(res=>res.json())
         .then(data=>{
             // console.log(data)

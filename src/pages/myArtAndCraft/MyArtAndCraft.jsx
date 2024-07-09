@@ -13,7 +13,7 @@ const MyArtAndCraft = () => {
     const [items,setItems]=useState([])
     const [control,setControl]=useState(false)
     useEffect(()=>{
-        fetch(`http://localhost:5000/myItem/${user?.email}`)
+        fetch(`https://server-site-qeqmcgztd-badhon-ranis-projects.vercel.app/myItem/${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             setItems(data)
@@ -31,7 +31,7 @@ const MyArtAndCraft = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch( `http://localhost:5000/delete/${id}`,{
+                fetch( `https://server-site-qeqmcgztd-badhon-ranis-projects.vercel.app/delete/${id}`,{
                     method:"DELETE",
                 
                 })

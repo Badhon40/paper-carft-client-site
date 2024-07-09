@@ -8,7 +8,7 @@ const Update = () => {
     const {id}=useParams()
     const [item,setItem]=useState({})
     useEffect(()=>{
-        fetch(`https://server-site-85bwfvv9u-badhon-ranis-projects.vercel.app/viewOneDetail/${id}`)
+        fetch(`https://server-site-drab-gamma.vercel.app/${id}`)
         .then(res=>res.json())
         .then(data=>{
             // console.log(data)
@@ -29,7 +29,7 @@ const Update = () => {
         processing_time: e.target.processing_time.value,
         stockStatus: e.target.stockStatus.value,
       };
-      fetch(`https://server-site-85bwfvv9u-badhon-ranis-projects.vercel.app/${id}`,{
+      fetch(`https://server-site-drab-gamma.vercel.app//${id}`,{
         method:'PUT',
         headers:{
             'content-type':'application/json'

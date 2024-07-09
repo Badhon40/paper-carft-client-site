@@ -22,7 +22,7 @@ const AddArtAndCraft = () => {
         name: user.displayName
       };
 
-      fetch('https://server-site-qeqmcgztd-badhon-ranis-projects.vercel.app/addItem',{
+      fetch('https://server-site-drab-gamma.vercel.app/addItem',{
         method:"POST",
         headers:{
             'content-type':'application/json'

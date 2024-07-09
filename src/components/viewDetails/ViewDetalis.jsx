@@ -7,7 +7,7 @@ const {id}=useParams()
 console.log(id)
 const [item,setItem]=useState({})
     useEffect(()=>{
-        fetch(`https://server-site-qeqmcgztd-badhon-ranis-projects.vercel.app/${id}`)
+        fetch(`https://server-site-drab-gamma.vercel.app/${id}`)
         .then(res=>res.json())
         .then(data=>{
             // console.log(data)

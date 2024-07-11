@@ -1,9 +1,27 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../firebaseProvider/FirebaseProvider";
 
 const Navbar = () => {
     const {logout,user}=useContext(AuthContext)
+    const [theme,setTheme]=useState('light')
+
+    useEffect(()=>{
+        localStorage.setItem('theme',theme)
+        const localTheme=localStorage.getItem('theme')
+        document.querySelector('html').setAttribute('data-theme',localTheme)
+    },[theme])
+
+    const handleTheme=(e)=>{
+        if(e.target.checked){
+            setTheme('dark')
+        }
+        else{
+            setTheme('light')
+        }
+    }
+
+    // console.log(theme)
     const links=<>
     <li>
         <NavLink to='/'>Home</NavLink>
@@ -61,9 +79,8 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-4">
         <label className="grid cursor-pointer place-items-center">
-            <input
+            <input onChange={handleTheme}
                 type="checkbox"
-                value="synthwave"
                 className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1" />
             <svg
                 className="stroke-base-100 fill-base-100 col-start-1 row-start-1"

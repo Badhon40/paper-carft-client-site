@@ -13,7 +13,7 @@ const ArtAndCraft = () => {
    .then(res=>res.json())
    .then(data=>{
     setAllCards(data)
-    console.log(data)
+    // console.log(data)
    })
 
     return (

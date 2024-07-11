@@ -13,8 +13,7 @@ const MyArtAndCraft = () => {
     const [items,setItems]=useState([])
     const [control,setControl]=useState(false)
     useEffect(()=>{
-        fetch(`server-site-drab-gamma.vercel.app
-/myItem/${user?.email}`)
+        fetch(`https://new-carft-server.vercel.app/myItem/${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             setItems(data)
@@ -32,7 +31,7 @@ const MyArtAndCraft = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch( `https://server-site-drab-gamma.vercel.app/delete/${id}`,{
+                fetch( `https://new-carft-server.vercel.app/delete/${id}`,{
                     method:"DELETE",
                 
                 })

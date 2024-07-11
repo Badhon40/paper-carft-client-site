@@ -56,6 +56,9 @@ const FirebaseProvider = ({children}) => {
                     setUser(user)
                     setLoading(false)
                 }
+                else{
+                    setUser(null)
+                }
           });
           return ()=>{
             unSubscribe()

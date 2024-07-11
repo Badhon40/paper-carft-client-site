@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {Link, } from "react-router-dom";
 
 
 
 const ArtAndCraft = () => {
+    // const cards=useLoaderData()
+
+    // console.log(cards)
   const [allCards,setAllCards]=useState([])
-   fetch("https://server-site-drab-gamma.vercel.app/allItem") 
+   fetch("https://new-carft-server.vercel.app/allItem") 
    .then(res=>res.json())
    .then(data=>{
     setAllCards(data)
+    console.log(data)
    })
 
     return (

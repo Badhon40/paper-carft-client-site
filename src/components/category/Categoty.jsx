@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Categoty = () => {
     const [cards,setCards]=useState([])
-    fetch("https://server-site-drab-gamma.vercel.app/category")
+    fetch("https://new-carft-server.vercel.app/category")
     .then(res=>res.json())
     .then(data=>setCards(data))
     return (

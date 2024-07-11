@@ -8,7 +8,7 @@ const Update = () => {
     const {id}=useParams()
     const [item,setItem]=useState({})
     useEffect(()=>{
-        fetch(`https://server-site-drab-gamma.vercel.app/${id}`)
+        fetch(`https://new-carft-server.vercel.app/${id}`)
         .then(res=>res.json())
         .then(data=>{
             // console.log(data)
@@ -29,7 +29,7 @@ const Update = () => {
         processing_time: e.target.processing_time.value,
         stockStatus: e.target.stockStatus.value,
       };
-      fetch(`https://server-site-drab-gamma.vercel.app//${id}`,{
+      fetch(`https://new-carft-server.vercel.app/updateItem/${id}`,{
         method:'PUT',
         headers:{
             'content-type':'application/json'
@@ -37,9 +37,10 @@ const Update = () => {
         body:JSON.stringify(data)
       })
       .then(res=>res.json())
-      .then(res=>{
-        if(res.modifiedCount>0){
-            setItem(res)
+      .then(data=>{
+        if(data.modifiedCount>0){
+            setItem(data)
+            console.log(data)
             toast.success("Updated Infomation")
 
         }
@@ -54,7 +55,7 @@ const Update = () => {
           <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-1 text-sm">
             <label htmlFor="image" className="block dark:text-gray-600">Image URL</label>
-            <input type="text" name="image" id="image" defaultValue={item.image} placeholder="Image URL" className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
+            <input type="text" name="image" id="image" defaultValue={item.image} className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
           </div>
           <div className="space-y-1 text-sm">
             <label htmlFor="item_name" className="block dark:text-gray-600">Item Name</label>
@@ -74,7 +75,7 @@ const Update = () => {
           </div>
           <div className="space-y-1 text-sm">
             <label htmlFor="short_description" className="block dark:text-gray-600">Short Description</label>
-            <input type="text" name="short_description" id="short_description" defaultValue={item.short_description} placeholder="Short Description" className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
+            <input type="text" name="short_description" id="short_description" defaultValue={item.short_description} className="w-full px-4 py-3 rounded-md border dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" required />
           </div>
           <div className="space-y-1 text-sm">
             <label htmlFor="price" className="block dark:text-gray-600">Price</label>

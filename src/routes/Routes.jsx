@@ -27,7 +27,8 @@ const Routes=createBrowserRouter([
             },
             {
                 path:'/allArts',
-                element:<ArtAndCraft></ArtAndCraft>
+                element:<ArtAndCraft></ArtAndCraft>,
+                // loader:()=>fetch(' https://new-carft-server.vercel.app/allItem'),
             },
             {
                 path:'/login',

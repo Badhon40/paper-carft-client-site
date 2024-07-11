@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-
+//  https://new-carft-server.vercel.app
 const ViewDetalis = () => {
 const {id}=useParams()
-console.log(id)
+// console.log(id)
 const [item,setItem]=useState({})
     useEffect(()=>{
-        fetch(`https://server-site-drab-gamma.vercel.app/${id}`)
+        fetch(`https://new-carft-server.vercel.app/viewOneDetail/${id}`)
         .then(res=>res.json())
         .then(data=>{
             // console.log(data)

@@ -3,8 +3,10 @@ import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../../firebaseProvider/FirebaseProvider";
 
 
+
 const AddArtAndCraft = () => {
     const {user}=useContext(AuthContext)
+    
     const handleAddItem = (e) => {
    
     e.preventDefault();
@@ -22,7 +24,7 @@ const AddArtAndCraft = () => {
         name: user.displayName
       };
 
-      fetch('https://server-site-drab-gamma.vercel.app/addItem',{
+      fetch('https://new-carft-server.vercel.app/addItem',{
         method:"POST",
         headers:{
             'content-type':'application/json'
@@ -31,6 +33,7 @@ const AddArtAndCraft = () => {
       })
       .then(res=>res.json())
       .then(data=>{
+        // console.log(data)
         if(data?.insertedId){
             toast.success('Item added successfully!');
         }
